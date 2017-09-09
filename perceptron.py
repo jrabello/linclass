@@ -55,6 +55,7 @@ class Perceptron:
         self.w[0] += w_delta
         return w_delta
 
+
     def plot(self):
         """Ploting scatterplot of data"""
         plt.scatter(self.X[:50, 0], self.X[:50, 1], color = 'red', marker = 'o', 
@@ -62,7 +63,7 @@ class Perceptron:
         plt.scatter(self.X[50:100, 0], self.X[50:100, 1], color = 'blue', marker = 'x', 
             label = 'versicolor')
         plt.xlabel('petal length')
-        plt.ylabel('versicolor length')
+        plt.ylabel('sepal length')
         plt.legend(loc='lower right')
 
         """
