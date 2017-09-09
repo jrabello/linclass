@@ -21,7 +21,7 @@ class Perceptron:
             
         """ building an array of -1 and 1, setosa(-1) from versicolor(1) """
         y = df.iloc[0:100, 4].values        
-        y = np.where(y=='Iris-setosa', -1, 1)
+        self.y = np.where(y=='Iris-setosa', -1, 1)
         
         """ building features matrix, sepal.length and petal.length """
         self.X = df.iloc[0:100, [0, 2]].values        
@@ -29,13 +29,15 @@ class Perceptron:
         """ initial weights are zero """
         self.w = np.zeros(self.X.shape[1]+1)
 
+
+    def fit(self):
         """ predicting and updating the weights in case of any error """
-        for _ in range(n_iter):
+        for _ in range(self.n_iter):
             error_count = 0        
-            for xi, target in zip(self.X,y):
+            for xi, target in zip(self.X, self.y):
                 predicted_value = self.predict(xi)
-                self.update_weights(target, predicted_value, xi)
-                error_count += int(self.w[0] != 0.0)        
+                w_delta = self.update_weights(target, predicted_value, xi)
+                error_count += int(w_delta != 0.0)                
             self.errors.append(error_count)
 
 
@@ -52,7 +54,6 @@ class Perceptron:
         self.w[1:] += w_delta * xi
         self.w[0] += w_delta
         return w_delta
-
 
     def plot(self):
         """Ploting scatterplot of data"""
