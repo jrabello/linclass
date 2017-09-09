@@ -1,7 +1,7 @@
 # linclass
 This project contains a custom implementation of rosenblatt's perceptron used for binary linear classification
 
-The dataset iris contains the following features used:
+The dataset iris contains the following features used to classify it as setosa or versicolor:
 - **sepal length**
 - **petal length**
 
